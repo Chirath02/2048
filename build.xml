@@ -1,0 +1,7 @@
+<project name="2048" default="compile" basedir=".">
+
+<description>
+  Build file for this project
+</description>
+
+</project> 
