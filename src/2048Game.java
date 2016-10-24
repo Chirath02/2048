@@ -38,7 +38,7 @@ class Game2048 {
       move_right();
     }
     else if(input == 'a') {
-      //move_left();
+      move_left();
     }
     else if(input == 'w') {
       move_up();
@@ -94,25 +94,47 @@ class Game2048 {
   }
 
   public void move_down() {
-    for(int j = 0; j < gameSize-1; ++j) {
-      for(int i = 0; i < gameSize; ++i) {
+    for(int j = 0; j < gameSize; ++j) {
+      for(int i = 0; i < gameSize-1; ++i) {
         if(tiles[i][j]!=0) {
-          if(tiles[i][j+1] == tiles[i][j]) {
-            tiles[i][j+1] += tiles[i][j];
+          if(tiles[i+1][j] == tiles[i][j]) {
+            tiles[i+1][j] += tiles[i][j];
             tiles[i][j] = 0;
           }
-          else if(tiles[i][j+1]==0) {
-            tiles[i][j+1] = tiles[i][j];
+          else if(tiles[i+1][j]==0) {
+            tiles[i+1][j] = tiles[i][j];
             tiles[i][j]=0;
           }
         }
       }
     }
 
-    for(int j = 0; j < gameSize-1; ++j)
-      for(int i = 0; i < gameSize; ++i)
-        if(tiles[i][j+1] == 0)
-          tiles[i][j+1] = tiles[i][j];
+    for(int j = 0; j < gameSize; ++j)
+      for(int i = 0; i < gameSize-1; ++i)
+        if(tiles[i+1][j] == 0)
+          tiles[i+1][j] = tiles[i][j];
+  }
+
+  public void move_left() {
+    for(int i = 3; i > 0; i--) {
+      for(int j = 3; j > 1; j--) {
+        if(tiles[i][j]!=0) {
+          if(tiles[i][j-1] == tiles[i][j]) {
+            tiles[i][j-1] += tiles[i][j];
+            tiles[i][j] = 0;
+          }
+          else if(tiles[i][j-1]==0) {
+            tiles[i][j-1] = tiles[i][j];
+            tiles[i][j]=0;
+          }
+        }
+      }
+    }
+
+    for(int i = 3; i > 0; i--)
+      for(int j = 3; j > 1; j--)
+        if(tiles[i][j-1] == 0)
+          tiles[i][j-1] = tiles[i][j];
   }
 
   public boolean canMoves() {
