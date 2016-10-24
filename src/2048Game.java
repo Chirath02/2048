@@ -35,15 +35,19 @@ class Game2048 {
   public void move(char input) {
     if(input == 'd') {
       move_right();
+      printTiles();
     }
     else if(input == 'a') {
       move_left();
+      printTiles();
     }
     else if(input == 'w') {
       move_up();
+      printTiles();
     }
     else if(input == 's') {
       move_down();
+      printTiles();
     }
     initialize(1);
   }
