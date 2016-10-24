@@ -31,9 +31,23 @@ class Game2048 {
     }
   }
 
+  public void move(char input) {
+    for(int i = 0; i < gameSize; ++i) {
+      for(int j = 0; j < gameSize; ++j) {
+      }
+    }
+
+    initialize(1);
+  }
+
+  public boolean checkForMove() {
+    return true;
+  }
+
   public startGame() {
 
   }
+
 
 
   public static void main(String[] args) {
