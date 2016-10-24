@@ -19,7 +19,7 @@ class Game2048 {
       }
     }
     System.out.println("a - left, w - up, d - right, s - down");
-    game.printTiles();
+    printTiles();
   }
 
   public void printTiles() {
@@ -34,16 +34,34 @@ class Game2048 {
   }
 
   public void move(char input) {
+    if(input == 'd') {
+
+      for(int i = 0; i < gameSize; ++i) {
+        for(int j = 0; j < gameSize-1; ++j) {
+          if(tiles[i][j]!=0) {
+            if(tiles[i][j+1] == tiles[i][j]) {
+              tiles[i][j+1] += tiles[i][j];
+              tiles[i][j] = 0;
+            }
+            else if(tiles[i][j+1]==0) {
+              tiles[i][j+1] = tiles[i][j];
+              tiles[i][j]=0;
+            }
+          }
+        }
+    }
+
     for(int i = 0; i < gameSize; ++i) {
-      for(int j = 0; j < gameSize; ++j) {
+      for(int j = 0; j < gameSize-1; ++j) {
+        if(tiles[i][j+1] == 0 && tiles[i][j]!=0) {
+          tiles[i][j+1] = tiles[i][j+1]; 
+        }
       }
     }
 
-    initialize(1);
   }
 
-  public void move(char input) {
-    
+    initialize(1);
   }
 
   public boolean canMoves() {
@@ -51,15 +69,16 @@ class Game2048 {
   }
 
   public void startGame() {
-      while(1) {
+    Scanner scanner = new Scanner(System.in);
+      while(true) {
         System.out.print("->");
-        char input = scanner.nextChar();
+        char input = (char) scanner.next().charAt(0);
         move(input);
         if(canMoves() == false) {
           System.out.println("You are out of moves! Game Over!!!");
           break;
         }
-        game.printTiles();
+        printTiles();
       }
   }
 
