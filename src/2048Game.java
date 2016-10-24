@@ -43,8 +43,8 @@ class Game2048 {
     else if(input == 'w') {
       move_up();
     }
-    else if(input == 'd') {
-      //move_down();
+    else if(input == 's') {
+      move_down();
     }
     initialize(1);
   }
@@ -94,8 +94,8 @@ class Game2048 {
   }
 
   public void move_down() {
-    for(int j = 0; j < gameSize; ++j) {
-      for(int i = 0; i < gameSize-1; ++i) {
+    for(int j = 0; j < gameSize-1; ++j) {
+      for(int i = 0; i < gameSize; ++i) {
         if(tiles[i][j]!=0) {
           if(tiles[i][j+1] == tiles[i][j]) {
             tiles[i][j+1] += tiles[i][j];
@@ -109,8 +109,8 @@ class Game2048 {
       }
     }
 
-    for(int j = 0; j < gameSize; ++j)
-      for(int i = 0; i < gameSize-1; ++i)
+    for(int j = 0; j < gameSize-1; ++j)
+      for(int i = 0; i < gameSize; ++i)
         if(tiles[i][j+1] == 0)
           tiles[i][j+1] = tiles[i][j];
   }
