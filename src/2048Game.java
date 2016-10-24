@@ -7,7 +7,7 @@ class Game2048 {
   int tiles[][] = new int[gameSize][gameSize];
   int max = gameSize-1, min = 0;
   Random rand = new Random();
-  Scanner scanner = new Scanner(Syatem.in);
+  Scanner scanner = new Scanner(System.in);
 
   public void initialize(int number) {
     for(int i =0; i < number;) {
@@ -18,6 +18,8 @@ class Game2048 {
         tiles[x][y] = initialTileValue;
       }
     }
+    System.out.println("a - left, w - up, d - right, s - down");
+    game.printTiles();
   }
 
   public void printTiles() {
@@ -40,20 +42,32 @@ class Game2048 {
     initialize(1);
   }
 
-  public boolean checkForMove() {
-    return true;
+  public void move(char input) {
+    
   }
 
-  public startGame() {
+  public boolean canMoves() {
+    return false;
+  }
 
+  public void startGame() {
+      while(1) {
+        System.out.print("->");
+        char input = scanner.nextChar();
+        move(input);
+        if(canMoves() == false) {
+          System.out.println("You are out of moves! Game Over!!!");
+          break;
+        }
+        game.printTiles();
+      }
   }
 
 
 
   public static void main(String[] args) {
     Game2048 game = new Game2048();
-    game.initialize(initialTileValue);
-
-    game.printTiles();
+    game.initialize(2);
+    game.startGame();
   }
 }
