@@ -35,21 +35,19 @@ class Game2048 {
   public void move(char input) {
     if(input == 'd') {
       move_right();
-      printTiles();
+
     }
     else if(input == 'a') {
       move_left();
-      printTiles();
     }
     else if(input == 'w') {
       move_up();
-      printTiles();
     }
     else if(input == 's') {
       move_down();
-      printTiles();
     }
     initialize(1);
+    printTiles();
   }
 
   public void move_right() {
@@ -150,6 +148,7 @@ class Game2048 {
     Scanner scanner = new Scanner(System.in);
     printTiles();
       while(true) {
+        System.out.println();
         System.out.print("->");
         char input = (char) scanner.next().charAt(0);
         move(input);
